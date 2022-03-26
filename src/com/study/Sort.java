@@ -29,35 +29,32 @@ public class Sort {
     }
 
     public static void quickSort(int[] arr, int low, int heigh) {
-        if (low >= heigh) {
+        if (low >= high) {
             return;
         }
         int i = low;
-        int j = heigh;
+        int j = high;
         int temp;
-        int key = arr[i];
+        int point = arr[i];
 
         while (i < j) {
-            while (arr[j] >= key && i < j) {
+            while (arr[j] >= point && i < j) {
                 j--;
             }
-            if (i < j) {
-                temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
-            }
-            while (arr[i] <= key && i < j) {
+            temp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = temp;
+            while (arr[i] <= point && i < j) {
                 i++;
             }
-            if (i < j) {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+
         }
 
         quickSort(arr, low, i - 1);
-        quickSort(arr, i + 1, heigh);
+        quickSort(arr, i + 1, high);
 
     }
 
