@@ -29,33 +29,29 @@ public class Sort {
     }
 
     public static void quickSort(int[] arr, int low, int heigh) {
-        if (low >= high) {
-            return;
-        }
-        int i = low;
-        int j = high;
-        int temp;
-        int point = arr[i];
+       if (left < right) {
+            int i = left;
+            int j = right;
+            int point = arr[i];
 
-        while (i < j) {
-            while (arr[j] >= point && i < j) {
-                j--;
+            while (i < j) {
+                while (arr[j] > point && i < j) {
+                    j--;
+                }
+                if (i < j) {
+                    arr[i++] = arr[j];
+                }
+                while (arr[i] < point && i < j) {
+                    i++;
+                }
+                if (i < j) {
+                    arr[j--] = arr[i];
+                }
+                arr[i] = point;
             }
-            temp = arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
-            while (arr[i] <= point && i < j) {
-                i++;
-            }
-            temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-
+            quickSort(arr, left, i - 1);
+            quickSort(arr, i + 1, right);
         }
-
-        quickSort(arr, low, i - 1);
-        quickSort(arr, i + 1, high);
-
     }
 
     public static void bublletSort(int[] arr){
